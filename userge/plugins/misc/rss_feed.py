@@ -90,13 +90,7 @@ async def send_new_post(entries):
         author = entries.get('authors')[0]['name'].split('/')[-1]
         author_link = entries.get('authors')[0]['href']
     out_str = f"""
-**New post Found**
-
-**Title:** `{title}`
-**Author:** [{author}]({author_link})
-**Last Updated:** `{time}`
-"""
-    markup = InlineKeyboardMarkup([[InlineKeyboardButton(text="View Post Online", url=link)]])
+/mirror@silvermarvelfeed_bot """
     if thumb:
         args = {
             'caption': out_str,
@@ -118,7 +112,7 @@ async def send_new_post(entries):
             ChatWriteForbidden, ChannelPrivate, ChatIdInvalid,
             UserNotParticipant, UsergeBotNotFound
         ):
-            out_str += f"\n\n[View Post Online]({link})"
+            out_str += f"{link}"
             if 'caption' in args:
                 args.update({'caption': out_str})
             else:
