@@ -45,7 +45,6 @@ async def add_new_feed(url: str, l_u: str) -> str:
         pub, now = _parse_time(l_u)
         out_str = f"""
 #ADDED_NEW_FEED_URL
-
 \t\t**FEED URL:** `{url}`
 \t\t**LAST UPDATED:** `{pub}`
 """
@@ -60,7 +59,6 @@ async def delete_feed(url: str) -> str:
     if url in RSS_DICT:
         out_str = f"""
 #DELETED_FEED_URL
-
 \t\t**FEED_URL:** `{url}`
 """
         del RSS_DICT[url]
@@ -90,7 +88,7 @@ async def send_new_post(entries):
         author = entries.get('authors')[0]['name'].split('/')[-1]
         author_link = entries.get('authors')[0]['href']
     out_str = f"""
-/mirror@cooldogemirrorbot """
+/mirror@silvermarvel291_bot """
     if thumb:
         args = {
             'caption': out_str,
@@ -221,3 +219,15 @@ def _parse_time(t: str) -> Tuple[datetime, datetime]:
 @pool.run_in_thread
 def _parse(url: str) -> None:
     return feedparser.parse(url)
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
